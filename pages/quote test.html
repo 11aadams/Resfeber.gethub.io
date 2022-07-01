@@ -1,0 +1,131 @@
+
+
+<style>
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+body {
+  background: -webkit-linear-gradient(left top, #5858FA, #FA5882);
+}
+
+body, .quote-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.quote-box {
+  width: 50%;
+  height: 50%;
+  background-color: #FFFFFF;
+  border: 2px solid;
+  border-color: #FFFFFF;
+  border-radius: 3px;
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+<head>
+<!-- <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+</head>
+<body>
+  <div class="quote-box">
+    <p class="quote message"></p>
+    <p class="author"></p>
+    <p class="movie"></p>
+    <button id="getMessage">New quote</button>
+  </div>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+</body>
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+//get random int between min and max inclusive
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; 
+}
+//get random quote from list of quotes
+function getRandomQuoteObject(quotesList) {
+	var randomQuote = quotesList[getRandomIntInclusive(0, quotesList.length)];
+  return randomQuote;
+}
+//list of quotes
+var quotesList = [
+	{
+		"quote": "Terra incognita",
+		"author": "a term used in cartography for regions that have not been mapped or documented.",
+		"movie": "Ptolemy's Geography"
+	},
+	{
+		"quote": "Resfeber",
+		"author": "The restless race of the traveller's heart before the journey begins.",
+		"movie": "Swedish"
+	},
+	{
+		"quote": "Fernweh",
+		"author": "Homesick for a place you've never been.",
+		"movie": "German"
+	},
+	{
+		"quote": "Flâneur",
+		"author": "Aimlessly wandering without any destination, just to enjoy the views.",
+		"movie": "French"
+	},
+	{
+		"quote": "Gumnu",
+		"author": "To wander",
+		"movie": "Nepali"
+	}
+]
+
+$(document).ready(function() {
+
+    $("#getMessage").on("click", function(){ 
+    	  var quote =  getRandomQuoteObject(quotesList);
+        
+        console.log(quote);
+      	var message = quote.quote;
+      	var author = quote.author;
+      	var movie = quote.movie;
+
+        $(".message").html(message);
+        $(".author").html(author);
+        $(".movie").html(movie);
+    });
+
+  });
+  </script>
+  
+  
+  
+  
+  
+  
+  
+  
